@@ -3,6 +3,7 @@ import { View, ListView, Image } from 'react-native';
 import { connect } from "react-redux";
 import Header from '../components/Header';
 import { loadPhotos } from '../../state/actions';
+import PhotoListItem from "../components/PhotoListItem";
 
 class PhotosView extends Component {
     componentWillMount() {
@@ -23,8 +24,7 @@ class PhotosView extends Component {
     }
 
     renderRow(photo) {
-        const source = { uri: photo.urls.small };
-        return <Image style={{ aspectRatio: 1 }} source={source} />
+        return <PhotoListItem photo={photo} />
     }
 
     render() {
