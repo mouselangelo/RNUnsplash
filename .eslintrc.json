@@ -4,10 +4,12 @@
         "browser": true
     },
     "plugins": [
-        "react"
+        "react",
+        "react-native",
+        "prettier"
     ],
     "extends": [
-        "eslint:recommended",
+        "plugin:prettier/recommended",
         "plugin:react/recommended"
     ],
     "rules": {
