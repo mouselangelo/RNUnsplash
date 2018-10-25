@@ -6,6 +6,7 @@ import { loadPhotos } from '../../state/actions';
 import PhotoListItem from "../components/PhotoListItem";
 
 class PhotosView extends Component {
+
     componentWillMount() {
         this.props.loadPhotos();
     }
@@ -14,14 +15,21 @@ class PhotosView extends Component {
         return <PhotoListItem photo={item} />
     };
 
+    loadMoreItems() {
+        this.props.loadPhotos();
+    }
+
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: '#f0f0f0' }}>
                 <Header>Photos</Header>
                 <FlatList
+                    style={{ flex: 1 }}
                     data={this.props.photos}
                     renderItem={this.renderListItem}
                     keyExtractor={item => item.id}
+                    onEndReached={this.loadMoreItems.bind(this)}
+                    onEndReachedThreshold={1}
                 />
             </View>
         );

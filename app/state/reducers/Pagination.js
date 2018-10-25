@@ -1,10 +1,12 @@
 import { LOAD_PHOTOS_COMPLETE } from '../actions/actionTypes';
 
-export default (state = [], action) => {
+const Pagination = (state = { page: 1 }, action) => {
     switch (action.type) {
         case LOAD_PHOTOS_COMPLETE:
-            return state.concat(action.photos);
+            return { ...state, page: state.page + 1 };
         default:
             return state;
     }
-}
+};
+
+export default Pagination;
